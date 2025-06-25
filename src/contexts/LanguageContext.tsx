@@ -97,6 +97,11 @@ const translations = {
         "contact.yourEmail": "Your Email",
         "contact.yourMessage": "Your Message",
         "contact.send": "Send Message",
+        "contact.sending": "Sending...",
+        "contact.messageSent": "Message sent successfully! I'll get back to you soon.",
+        "contact.errorSending": "Error sending message. Please try again or contact me directly.",
+        "contact.captchaRequired": "Please complete the captcha verification.",
+        "contact.fillAllFields": "Please fill in all fields.",
 
         // Footer
         "footer.description": "Full Stack Developer specialized in process automation and scalable web development.",
@@ -176,7 +181,7 @@ const translations = {
         "projects.fullstack.title": "Aplicaciones Full Stack - Advante Digital",
         "projects.fullstack.description":
             "Desarrollo y soporte de aplicaciones web y móviles usando tecnologías modernas. Incrementé el rendimiento del sistema en un 60% mediante optimización de código.",
-        "projects.liveDemo": "Demo en Vivo",
+        "projects.liveDemo": "Demo",
         "projects.code": "Código",
 
         // Contact Section
@@ -194,6 +199,11 @@ const translations = {
         "contact.yourEmail": "Tu Correo",
         "contact.yourMessage": "Tu Mensaje",
         "contact.send": "Enviar Mensaje",
+        "contact.sending": "Enviando...",
+        "contact.messageSent": "¡Mensaje enviado exitosamente! Te responderé pronto.",
+        "contact.errorSending": "Error al enviar el mensaje. Inténtalo de nuevo o contáctame directamente.",
+        "contact.captchaRequired": "Por favor completa la verificación captcha.",
+        "contact.fillAllFields": "Por favor completa todos los campos.",
 
         // Footer
         "footer.description":

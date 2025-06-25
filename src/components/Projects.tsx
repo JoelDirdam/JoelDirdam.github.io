@@ -38,7 +38,7 @@ export default function Projects() {
             title: t("projects.fullstack.title"),
             description: t("projects.fullstack.description"),
             image: "src\\assets\\advantedigital.jpg",
-            technologies: ["Flutter", "PHP", "JavaScript", "Git", "Full Stack"],
+            technologies: ["Flutter", "PHP", "cakePHP","Next.js", "JavaScript", "Git", "SQL", "Navicat", "Android Studio"],
             liveUrl: "https://advantedigital.com/",
             githubUrl: "",
         },

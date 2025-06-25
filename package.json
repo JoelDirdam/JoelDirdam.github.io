@@ -11,14 +11,14 @@
     "deploy": "npm run build && touch dist/.nojekyll"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "lucide-react": "^0.294.0",
+    "@emailjs/browser": "^4.4.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0",
-    "@emailjs/browser": "^4.3.3",
-    "react-google-recaptcha": "^3.1.0"
+    "lucide-react": "^0.294.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-google-recaptcha": "^3.1.0",
+    "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
