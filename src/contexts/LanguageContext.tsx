@@ -27,8 +27,8 @@ const translations = {
         "hero.title": "Full Stack Developer | Web Development & Automation Specialist",
         "hero.description":
             "Software Engineer specialized in Full Stack Development with solid experience in creating, maintaining and optimizing scalable web applications. Specialized in process automation using Python, RESTful API integration and development with modern frameworks.",
-        "hero.hrefCV": "public\\docs\\JoelAViolanteMadridResume.pdf",
-        "hero.downloadNameCV": "joel_madrid_resume.pdf",
+        "hero.cvPath": "",//"/docs/JoelAViolanteMadridResume_EN.pdf",
+        "hero.downloadNameCV": "joel_madrid_resume_en.pdf",
         "hero.downloadCV": "Download CV",
         "hero.learnMore": "Learn More",
         "hero.location": "México (GMT-6)",
@@ -49,7 +49,7 @@ const translations = {
         "about.journey.description1":
             "I started my career as a Software Engineer over 2 years ago, specializing in Full Stack Development. I have worked on large-scale projects for CONAFOR and World Bank, optimizing processes and developing innovative solutions.",
         "about.journey.description2":
-            "When I'm not coding,  I'm exploring new technologies, looking to improve professionally, taking courses or consulting mentorships to feed my knowledge.",
+            "When I'm not coding, I'm exploring new technologies, looking to improve professionally, taking courses or consulting mentorships to feed my knowledge.",
         "about.frontend": "Frontend Development",
         "about.backend": "Backend Development",
         "about.automation": "Process Automation",
@@ -126,8 +126,8 @@ const translations = {
         "hero.title": "Full Stack Developer | Especialista en Desarrollo Web y Automatización",
         "hero.description":
             "Ingeniero en Software especializado en Desarrollo Full Stack con sólida experiencia en creación, mantenimiento y optimización de aplicaciones web escalables. Especializado en automatización de procesos mediante Python, integración de APIs RESTful y desarrollo con frameworks modernos.",
-        "hero.hrefCV": "public\\docs\\JoelAViolanteMadridResume.pdf",
-        "hero.downloadNameCV": "joel_madrid_cv.pdf",
+        "hero.cvPath": "/docs/JoelAViolanteMadridResume_ES.pdf",
+        "hero.downloadNameCV": "joel_madrid_cv_es.pdf",
         "hero.downloadCV": "Descargar CV",
         "hero.learnMore": "Conocer Más",
         "hero.location": "México (GMT-6)",

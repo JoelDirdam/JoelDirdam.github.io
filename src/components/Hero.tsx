@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Download } from "lucide-react"
 import { useLanguage } from "../contexts/LanguageContext"
-import personalImage from "../../public/images/personal.jpg"
 
 export default function Hero() {
     const { t } = useLanguage()
@@ -11,6 +10,23 @@ export default function Hero() {
     const scrollToAbout = () => {
         const element = document.getElementById("about")
         element?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    const handleDownloadCV = () => {
+        const cvPath = t("hero.cvPath")
+        const fileName = t("hero.downloadNameCV")
+
+        // Crear un enlace temporal para la descarga
+        const link = document.createElement("a")
+        link.href = cvPath
+        link.download = fileName
+        link.target = "_blank"
+        link.rel = "noopener noreferrer"
+
+        // Agregar al DOM, hacer clic y remover
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
     }
 
     return (
@@ -24,9 +40,7 @@ export default function Hero() {
                         <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">{t("hero.title")}</p>
                         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">{t("hero.description")}</p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                                <a href="/docs/cv.pdf" download="TuNombre_CV.pdf" target="_blank" rel="noopener noreferrer"
-                                ></a>
+                            <Button size="lg" className="bg-blue-600 hover:bg-blue-700" onClick={handleDownloadCV}>
                                 <Download className="mr-2 h-4 w-4" />
                                 {t("hero.downloadCV")}
                             </Button>
@@ -46,9 +60,15 @@ export default function Hero() {
                         <div className="relative">
                             <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-600 dark:border-blue-400">
                                 <img
-                                    src={personalImage}
+                                    src="/images/personal.jpg"
                                     alt="Profile"
                                     className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                        // Fallback si la imagen no carga
+                                        const target = e.target as HTMLImageElement
+                                        target.src =
+                                            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=320&h=320&fit=crop&crop=face"
+                                    }}
                                 />
                             </div>
                             <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600 dark:bg-blue-400 rounded-full flex items-center justify-center">
