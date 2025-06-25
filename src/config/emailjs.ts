@@ -6,4 +6,4 @@ export const EMAILJS_CONFIG = {
 }
 
 // Configuración de reCAPTCHA
-export const RECAPTCHA_SITE_KEY = "Sq-7sxQ-a1eeuZTfX" // Reemplaza con tu site key
+export const RECAPTCHA_SITE_KEY = "6LcdB20rAAAAAGJcFuJMhJG79FeVGqkfDiRGH_5N" // Reemplaza con tu site key

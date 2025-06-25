@@ -13,7 +13,7 @@ export default function Projects() {
         {
             title: t("projects.sppif.title"),
             description: t("projects.sppif.description"),
-            image: "src\\assets\\SPPIF.jpg",
+            image: "/images/SPPIF.jpg", // Ruta desde public
             technologies: ["Python", "PHP", "HTML", "CSS", "Google Earth Engine", "Sentinel-2", "ArcGis"],
             liveUrl: "https://forestales.ujed.mx/incendios2/#",
             githubUrl: "",
@@ -29,7 +29,7 @@ export default function Projects() {
         {
             title: t("projects.inv.title"),
             description: t("projects.inv.description"),
-            image: "src\\assets\\inv.jpg",
+            image: "/images/inv.jpg", // Ruta desde public
             technologies: ["React", "TypeScript", "Tailwind", "Responsive Design", "RESTful", "Node.js", "MongoDB"],
             liveUrl: "https://chaimanzana.com/invitations/grad/lniuat2024/Mayra/Gonzalez/1/",
             githubUrl: "https://github.com/JoelDirdam/chai-invitaciones",
@@ -37,8 +37,8 @@ export default function Projects() {
         {
             title: t("projects.fullstack.title"),
             description: t("projects.fullstack.description"),
-            image: "src\\assets\\advantedigital.jpg",
-            technologies: ["Flutter", "PHP", "cakePHP","Next.js", "JavaScript", "Git", "SQL", "Navicat", "Android Studio"],
+            image: "/images/advantedigital.jpg", // Ruta desde public
+            technologies: ["Flutter", "PHP", "cakePHP", "Next.js", "JavaScript", "Git", "SQL", "Navicat", "Android Studio"],
             liveUrl: "https://advantedigital.com/",
             githubUrl: "",
         },
@@ -55,11 +55,17 @@ export default function Projects() {
                 <div className="grid md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
                         <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                            <div className="relative h-48 overflow-hidden">
+                            <div className="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
                                 <img
                                     src={project.image || "/placeholder.svg"}
                                     alt={project.title}
                                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                    onError={(e) => {
+                                        // Fallback si la imagen no carga
+                                        const target = e.target as HTMLImageElement
+                                        target.src = `https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=300&h=200&fit=crop&crop=center`
+                                    }}
+                                    loading="lazy"
                                 />
                             </div>
                             <CardHeader>
@@ -83,9 +89,14 @@ export default function Projects() {
                                             </a>
                                         </Button>
                                     )}
-                                    {project.githubUrl && ( 
+                                    {project.githubUrl && (
                                         <Button variant="outline" size="sm" asChild>
-                                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                                            <a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center"
+                                            >
                                                 <Github className="mr-2 h-4 w-4" />
                                                 {t("projects.code")}
                                             </a>

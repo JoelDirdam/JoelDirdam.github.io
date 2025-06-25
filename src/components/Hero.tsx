@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Download } from "lucide-react"
 import { useLanguage } from "../contexts/LanguageContext"
-import personalImage from "../assets/personal.jpg"
+import personalImage from "../../public/images/personal.jpg"
 
 export default function Hero() {
     const { t } = useLanguage()
