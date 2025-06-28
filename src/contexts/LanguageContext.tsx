@@ -18,20 +18,15 @@ const translations = {
         // Header
         "nav.home": "Home",
         "nav.about": "About",
-        "nav.skills": "Skills",
         "nav.projects": "Projects",
         "nav.contact": "Contact",
 
         // Hero Section
-        "hero.greeting": "Hi, I'm",
-        "hero.title": "Full Stack Developer | Web Development & Automation Specialist",
+        "hero.title": "SOFTWARE ENGINEER",
         "hero.description":
             "Software Engineer specialized in Full Stack Development with solid experience in creating, maintaining and optimizing scalable web applications. Specialized in process automation using Python, RESTful API integration and development with modern frameworks.",
-        "hero.cvPath": "",//"/docs/JoelAViolanteMadridResume_EN.pdf",
+        "hero.cvPath": "/docs/JoelAViolanteMadridResume_EN.pdf",
         "hero.downloadNameCV": "joel_madrid_resume_en.pdf",
-        "hero.downloadCV": "Download CV",
-        "hero.learnMore": "Learn More",
-        "hero.location": "México (GMT-6)",
 
         // About Section
         "about.title": "About Me",
@@ -116,21 +111,16 @@ const translations = {
     es: {
         // Header
         "nav.home": "Inicio",
-        "nav.about": "Acerca de",
-        "nav.skills": "Habilidades",
+        "nav.about": "Sobre mi",
         "nav.projects": "Proyectos",
         "nav.contact": "Contacto",
 
         // Hero Section
-        "hero.greeting": "Hola, soy",
-        "hero.title": "Full Stack Developer | Especialista en Desarrollo Web y Automatización",
+        "hero.title": "INGENIERO\nEN SOFTWARE",
         "hero.description":
             "Ingeniero en Software especializado en Desarrollo Full Stack con sólida experiencia en creación, mantenimiento y optimización de aplicaciones web escalables. Especializado en automatización de procesos mediante Python, integración de APIs RESTful y desarrollo con frameworks modernos.",
         "hero.cvPath": "/docs/JoelAViolanteMadridResume_ES.pdf",
         "hero.downloadNameCV": "joel_madrid_cv_es.pdf",
-        "hero.downloadCV": "Descargar CV",
-        "hero.learnMore": "Conocer Más",
-        "hero.location": "México (GMT-6)",
 
         // About Section
         "about.title": "Acerca de Mí",
