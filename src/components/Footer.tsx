@@ -15,7 +15,7 @@ export default function Footer() {
                         <p className="text-gray-400 mb-4">{t("footer.description")}</p>
                         <div className="flex space-x-4">
                             <a
-                                href="https://github.com/joelviolante"
+                                href="https://github.com/JoelDirdam"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-white transition-colors"
@@ -23,7 +23,7 @@ export default function Footer() {
                                 <Github size={24} />
                             </a>
                             <a
-                                href="https://www.linkedin.com/in/joel-violante-madrid/"
+                                href="https://linkedin.com/in/joelmadrid/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-white transition-colors"
@@ -73,7 +73,6 @@ export default function Footer() {
                             <li>{t("footer.webDev")}</li>
                             <li>{t("footer.uiux")}</li>
                             <li>{t("footer.mobileDev")}</li>
-                            <li>{t("footer.consulting")}</li>
                         </ul>
                     </div>
                 </div>

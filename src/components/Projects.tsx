@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, Building2 } from "lucide-react"
 import { useLanguage } from "../contexts/LanguageContext"
 
 export default function Projects() {
@@ -39,8 +39,9 @@ export default function Projects() {
             description: t("projects.fullstack.description"),
             image: "/images/advantedigital.jpg", // Ruta desde public
             technologies: ["Flutter", "PHP", "cakePHP", "Next.js", "JavaScript", "Git", "SQL", "Navicat", "Android Studio"],
-            liveUrl: "https://advantedigital.com/",
+            liveUrl: "https://app.myspalive.com/",
             githubUrl: "",
+            corporateUrl:"https://advantedigital.com/",
         },
     ]
 
@@ -99,6 +100,19 @@ export default function Projects() {
                                             >
                                                 <Github className="mr-2 h-4 w-4" />
                                                 {t("projects.code")}
+                                            </a>
+                                        </Button>
+                                    )}
+                                    {project.corporateUrl && (
+                                        <Button variant="outline" size="sm" asChild>
+                                            <a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center"
+                                            >
+                                                <Building2 className="mr-2 h-4 w-4" />
+                                                {t("projects.company")}
                                             </a>
                                         </Button>
                                     )}

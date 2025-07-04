@@ -55,10 +55,10 @@ export default function Header() {
                     </nav>
 
                     {/* Social Links & Language Switch */}
-                    <div className="hidden md:flex items-center space-x-6">
+                    <div className="hidden md:flex items-center space-x-8">
                         <LanguageSwitch />
 
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-6">
                             <a
                                 href="https://github.com/JoelDirdam"
                                 target="_blank"
@@ -72,7 +72,7 @@ export default function Header() {
                                 />
                             </a>
                             <a
-                                href="https://linkedin.com/in/joel-violante-madrid/"
+                                href="https://linkedin.com/in/joelmadrid/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="transition-all duration-300 hover:scale-110"

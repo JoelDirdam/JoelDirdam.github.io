@@ -18,6 +18,7 @@ const translations = {
         // Header
         "nav.home": "Home",
         "nav.about": "About",
+        "nav.skills": "Skills",
         "nav.projects": "Projects",
         "nav.contact": "Contact",
 
@@ -27,6 +28,8 @@ const translations = {
             "Software Engineer specialized in Full Stack Development with solid experience in creating, maintaining and optimizing scalable web applications. Specialized in process automation using Python, RESTful API integration and development with modern frameworks.",
         "hero.cvPath": "/docs/JoelAViolanteMadridResume_EN.pdf",
         "hero.downloadNameCV": "joel_madrid_resume_en.pdf",
+        "hero.btn_cv": "Download Resume",
+        "hero.btn_contact": "Contact me",
 
         // About Section
         "about.title": "About Me",
@@ -44,7 +47,7 @@ const translations = {
         "about.journey.description1":
             "I started my career as a Software Engineer over 2 years ago, specializing in Full Stack Development. I have worked on large-scale projects for CONAFOR and World Bank, optimizing processes and developing innovative solutions.",
         "about.journey.description2":
-            "When I'm not coding, I'm exploring new technologies, looking to improve professionally, taking courses or consulting mentorships to feed my knowledge.",
+            "When I'm not programming, I'm exploring new technologies, looking to improve professionally, taking courses or mentoring to feed my knowledge.",
         "about.frontend": "Frontend Development",
         "about.backend": "Backend Development",
         "about.automation": "Process Automation",
@@ -59,7 +62,7 @@ const translations = {
         // Projects Section
         "projects.title": "Featured Projects",
         "projects.subtitle": "Here are some of my recent projects that showcase my skills and experience.",
-        "projects.sppif.title": "SPPIF System - CONAFOR",
+        "projects.sppif.title": "SPPIF System - Universidad Juarez del Estado de Durango, CONAFOR and World Bank",
         "projects.sppif.description":
             "Mexico's Forest Fire Danger Prediction System (SPPIF) is a decision support tool for fire management in Mexico. I implemented automation of satellite image processing and monitoring systems with early warnings, reducing incidences by 80%.",
         "projects.alpha.title": "Digital Catalog - Freelancer (Alpha Lubricants México)",
@@ -76,6 +79,7 @@ const translations = {
             "Development and support of web and mobile applications using modern technologies. I increased system performance by 60% through code optimization.",
         "projects.liveDemo": "Live Demo",
         "projects.code": "Code",
+        "projects.company": "Team work",
 
         // Contact Section
         "contact.title": "Get In Touch",
@@ -112,6 +116,7 @@ const translations = {
         // Header
         "nav.home": "Inicio",
         "nav.about": "Sobre mi",
+        "nav.skills": "Habilidades",
         "nav.projects": "Proyectos",
         "nav.contact": "Contacto",
 
@@ -121,6 +126,8 @@ const translations = {
             "Ingeniero en Software especializado en Desarrollo Full Stack con sólida experiencia en creación, mantenimiento y optimización de aplicaciones web escalables. Especializado en automatización de procesos mediante Python, integración de APIs RESTful y desarrollo con frameworks modernos.",
         "hero.cvPath": "/docs/JoelAViolanteMadridResume_ES.pdf",
         "hero.downloadNameCV": "joel_madrid_cv_es.pdf",
+        "hero.btn_cv": "Descargar CV",
+        "hero.btn_contact": "Contáctame",
 
         // About Section
         "about.title": "Acerca de Mí",
@@ -141,7 +148,7 @@ const translations = {
         "about.journey.description1":
             "Comencé mi carrera como Ingeniero en Software hace más de 2 años, especializándome en Desarrollo Full Stack. He trabajado en proyectos de gran escala para CONAFOR y Banco Mundial, optimizando procesos y desarrollando soluciones innovadoras.",
         "about.journey.description2":
-            "Cuando no estoy programando, me dedico a explorar nuevas tecnologías, buscando mejorar profesionalmente, haciendo cursos o consultando mentorias para alimentar mis conocimientos.",
+            "Cuando no estoy programando, me dedico a explorar nuevas tecnologías, buscando mejorar profesionalmente, haciendo cursos o en mentorias para alimentar mis conocimientos.",
         "about.frontend": "Desarrollo Frontend",
         "about.backend": "Desarrollo Backend",
         "about.automation": "Automatización de Procesos",
@@ -156,7 +163,7 @@ const translations = {
         // Projects Section
         "projects.title": "Proyectos Destacados",
         "projects.subtitle": "Aquí tienes algunos de mis proyectos recientes que muestran mis habilidades y experiencia.",
-        "projects.sppif.title": "Sistema SPPIF - CONAFOR",
+        "projects.sppif.title": "Sistema SPPIF - Universidad Juarez del Estado de Durango, CONAFOR y Banco Mundial",
         "projects.sppif.description":
             "El Sistema de Predicción de Peligro de Incendios Forestales (SPPIF) de México, es una herramienta de apoyo a la toma de decisiones para el manejo del fuego en México. Implementé automatización de procesamiento de imágenes satelitales y sistemas de monitoreo con alertas tempranas, reduciendo incidencias en un 80%.",
         "projects.alpha.title": "Catálogo Digital - Freelancer (Alpha Lubricants México)",
@@ -173,9 +180,10 @@ const translations = {
             "Desarrollo y soporte de aplicaciones web y móviles usando tecnologías modernas. Incrementé el rendimiento del sistema en un 60% mediante optimización de código.",
         "projects.liveDemo": "Demo",
         "projects.code": "Código",
+        "projects.company": "Equipo de trabajo",
 
         // Contact Section
-        "contact.title": "Ponte en Contacto",
+        "contact.title": "Ponte en Contacto Conmigo",
         "contact.subtitle":
             "¡Siempre estoy abierto a discutir nuevas oportunidades y proyectos interesantes. Creemos algo increíble juntos!",
         "contact.talkProject": "Hablemos sobre tu proyecto",
