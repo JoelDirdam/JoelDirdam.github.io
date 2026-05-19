@@ -25,16 +25,16 @@ const translations = {
         // Hero Section
         "hero.title": "SOFTWARE ENGINEER",
         "hero.description":
-            "Software Engineer specialized in Full Stack Development with solid experience in creating, maintaining and optimizing scalable web applications. Specialized in process automation using Python, RESTful API integration and development with modern frameworks.",
-        "hero.cvPath": "/docs/JoelAViolanteMadridResume_EN.pdf",
-        "hero.downloadNameCV": "joel_madrid_resume_en.pdf",
+            "Software Engineer with 3+ years of experience in Full Stack Development, building and optimizing scalable web applications. Skilled in Python process automation, RESTful APIs, geospatial data pipelines, and modern frameworks such as React, Next.js, and Flutter.",
+        "hero.cvPath": "/docs/CV_Joel_Violante_EN.pdf",
+        "hero.downloadNameCV": "CV_Joel_Violante_EN.pdf",
         "hero.btn_cv": "Download Resume",
         "hero.btn_contact": "Contact me",
 
         // About Section
         "about.title": "About Me",
         "about.subtitle":
-            "I'm a passionate full-stack developer with over 3 years of experience creating digital solutions that make a difference. I love turning complex problems into simple, beautiful, and intuitive solutions.",
+            "Full Stack Software Engineer focused on scalable web platforms, mobile apps, and data-driven automation. I turn complex requirements into reliable, maintainable products.",
         "about.cleanCode.title": "Clean Code",
         "about.cleanCode.description": "Writing maintainable, scalable, and efficient code following best practices.",
         "about.uiux.title": "UI/UX Design",
@@ -45,7 +45,7 @@ const translations = {
         "about.performance.description": "Optimizing applications for speed, accessibility, and search engine visibility.",
         "about.journey.title": "My Journey",
         "about.journey.description1":
-            "I started my career as a Software Engineer over 2 years ago, specializing in Full Stack Development. I have worked on large-scale projects for CONAFOR and World Bank, optimizing processes and developing innovative solutions.",
+            "I have worked on large-scale projects for CONAFOR, the World Bank, and UJED, developing geospatial monitoring systems and automating satellite image pipelines. At Advante Digital I build and maintain full stack web and mobile applications in production.",
         "about.journey.description2":
             "When I'm not programming, I'm exploring new technologies, looking to improve professionally, taking courses or mentoring to feed my knowledge.",
         "about.frontend": "Frontend Development",
@@ -100,7 +100,10 @@ const translations = {
         "contact.messageSent": "Message sent successfully! I'll get back to you soon.",
         "contact.errorSending": "Error sending message. Please try again or contact me directly.",
         "contact.captchaRequired": "Please complete the captcha verification.",
+        "contact.captchaLoadError":
+            "Captcha could not load. Verify your connection or contact me directly at joel.madrid.code@gmail.com.",
         "contact.fillAllFields": "Please fill in all fields.",
+        "contact.locationValue": "Durango, Mexico (GMT-6)",
 
         // Footer
         "footer.description": "Full Stack Developer specialized in process automation and scalable web development.",
@@ -123,16 +126,16 @@ const translations = {
         // Hero Section
         "hero.title": "INGENIERO\nEN SOFTWARE",
         "hero.description":
-            "Ingeniero en Software especializado en Desarrollo Full Stack con sólida experiencia en creación, mantenimiento y optimización de aplicaciones web escalables. Especializado en automatización de procesos mediante Python, integración de APIs RESTful y desarrollo con frameworks modernos.",
-        "hero.cvPath": "/docs/JoelAViolanteMadridResume_ES.pdf",
-        "hero.downloadNameCV": "joel_madrid_cv_es.pdf",
+            "Ingeniero en Software con más de 3 años de experiencia en Desarrollo Full Stack, creando y optimizando aplicaciones web escalables. Especializado en automatización con Python, APIs RESTful, pipelines geoespaciales y frameworks modernos como React, Next.js y Flutter.",
+        "hero.cvPath": "/docs/CV_Joel_Violante_ES.pdf",
+        "hero.downloadNameCV": "CV_Joel_Violante_ES.pdf",
         "hero.btn_cv": "Descargar CV",
         "hero.btn_contact": "Contáctame",
 
         // About Section
         "about.title": "Acerca de Mí",
         "about.subtitle":
-            "Soy un desarrollador full-stack apasionado con más de 3 años de experiencia creando soluciones digitales que marcan la diferencia. Me encanta convertir problemas complejos en soluciones simples, hermosas e intuitivas.",
+            "Ingeniero de Software Full Stack enfocado en plataformas web escalables, apps móviles y automatización basada en datos. Convierto requerimientos complejos en productos confiables y mantenibles.",
         "about.cleanCode.title": "Código Limpio",
         "about.cleanCode.description":
             "Escribiendo código mantenible, escalable y eficiente siguiendo las mejores prácticas.",
@@ -146,7 +149,7 @@ const translations = {
             "Optimizando aplicaciones para velocidad, accesibilidad y visibilidad en motores de búsqueda.",
         "about.journey.title": "Mi Trayectoria",
         "about.journey.description1":
-            "Comencé mi carrera como Ingeniero en Software hace más de 2 años, especializándome en Desarrollo Full Stack. He trabajado en proyectos de gran escala para CONAFOR y Banco Mundial, optimizando procesos y desarrollando soluciones innovadoras.",
+            "He trabajado en proyectos de gran escala para CONAFOR, Banco Mundial y la UJED, desarrollando sistemas de monitoreo geoespacial y automatizando pipelines de imágenes satelitales. En Advante Digital construyo y mantengo aplicaciones web y móviles full stack en producción.",
         "about.journey.description2":
             "Cuando no estoy programando, me dedico a explorar nuevas tecnologías, buscando mejorar profesionalmente, haciendo cursos o en mentorias para alimentar mis conocimientos.",
         "about.frontend": "Desarrollo Frontend",
@@ -201,7 +204,10 @@ const translations = {
         "contact.messageSent": "¡Mensaje enviado exitosamente! Te responderé pronto.",
         "contact.errorSending": "Error al enviar el mensaje. Inténtalo de nuevo o contáctame directamente.",
         "contact.captchaRequired": "Por favor completa la verificación captcha.",
+        "contact.captchaLoadError":
+            "No se pudo cargar el captcha. Verifica tu conexión o escríbeme directamente a joel.madrid.code@gmail.com.",
         "contact.fillAllFields": "Por favor completa todos los campos.",
+        "contact.locationValue": "Durango, México (GMT-6)",
 
         // Footer
         "footer.description":

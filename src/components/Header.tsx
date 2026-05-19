@@ -72,7 +72,7 @@ export default function Header() {
                                 />
                             </a>
                             <a
-                                href="https://linkedin.com/in/joelmadrid/"
+                                href="https://linkedin.com/in/joel-violante-madrid/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="transition-all duration-300 hover:scale-110"

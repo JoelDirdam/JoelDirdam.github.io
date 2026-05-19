@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink, Github, Building2 } from "lucide-react"
 import { useLanguage } from "../contexts/LanguageContext"
+import SectionHeading from "./SectionHeading"
 
 export default function Projects() {
     const { t } = useLanguage()
@@ -13,8 +14,8 @@ export default function Projects() {
         {
             title: t("projects.sppif.title"),
             description: t("projects.sppif.description"),
-            image: "/images/SPPIF.jpg", // Ruta desde public
-            technologies: ["Python", "PHP", "HTML", "CSS", "Google Earth Engine", "Sentinel-2", "ArcGis"],
+            image: "/images/SPPIF.jpg",
+            technologies: ["Python", "PHP", "HTML", "CSS", "Google Earth Engine", "Sentinel-2", "ArcGIS"],
             liveUrl: "https://forestales.ujed.mx/incendios2/#",
             githubUrl: "",
         },
@@ -29,61 +30,64 @@ export default function Projects() {
         {
             title: t("projects.inv.title"),
             description: t("projects.inv.description"),
-            image: "/images/inv.jpg", // Ruta desde public
-            technologies: ["React", "TypeScript", "Tailwind", "Responsive Design", "RESTful", "Node.js", "MongoDB"],
+            image: "/images/inv.jpg",
+            technologies: ["React", "TypeScript", "Tailwind", "Node.js", "MongoDB", "RESTful"],
             liveUrl: "https://chaimanzana.com/invitations/grad/lniuat2024/Mayra/Gonzalez/1/",
             githubUrl: "https://github.com/JoelDirdam/chai-invitaciones",
         },
         {
             title: t("projects.fullstack.title"),
             description: t("projects.fullstack.description"),
-            image: "/images/advantedigital.jpg", // Ruta desde public
-            technologies: ["Flutter", "PHP", "cakePHP", "Next.js", "JavaScript", "Git", "SQL", "Navicat", "Android Studio"],
+            image: "/images/advantedigital.jpg",
+            technologies: ["Flutter", "PHP", "CakePHP", "Next.js", "JavaScript", "SQL", "Android Studio"],
             liveUrl: "https://app.myspalive.com/",
             githubUrl: "",
-            corporateUrl:"https://advantedigital.com/",
+            corporateUrl: "https://advantedigital.com/",
         },
     ]
 
     return (
-        <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section id="projects" className="py-20 bg-primary-dark border-t border-primary-body/10">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{t("projects.title")}</h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">{t("projects.subtitle")}</p>
-                </div>
+                <SectionHeading title={t("projects.title")} subtitle={t("projects.subtitle")} />
 
                 <div className="grid md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
-                        <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                            <div className="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                        <Card key={index} className="portfolio-card overflow-hidden border-0">
+                            <div className="relative h-48 overflow-hidden bg-primary-dark/60">
                                 <img
                                     src={project.image || "/placeholder.svg"}
                                     alt={project.title}
-                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 opacity-90"
                                     onError={(e) => {
-                                        // Fallback si la imagen no carga
                                         const target = e.target as HTMLImageElement
-                                        target.src = `https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=300&h=200&fit=crop&crop=center`
+                                        target.src =
+                                            "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=300&h=200&fit=crop&crop=center"
                                     }}
                                     loading="lazy"
                                 />
+                                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/80 to-transparent pointer-events-none" />
                             </div>
                             <CardHeader>
-                                <CardTitle className="text-xl text-gray-900 dark:text-white">{project.title}</CardTitle>
+                                <CardTitle className="text-xl font-coolvetica text-primary-white">{project.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
-                                <div className="flex flex-wrap gap-2 mb-4">
+                                <p className="font-roboto text-primary-body mb-4 leading-relaxed">{project.description}</p>
+                                <div className="flex flex-wrap gap-2 mb-6">
                                     {project.technologies.map((tech, techIndex) => (
-                                        <Badge key={techIndex} variant="outline" className="text-xs">
+                                        <Badge key={techIndex} variant="outline" className="portfolio-badge text-xs">
                                             {tech}
                                         </Badge>
                                     ))}
                                 </div>
-                                <div className="flex gap-4">
+                                <div className="flex flex-wrap gap-3">
                                     {project.liveUrl && (
-                                        <Button variant="outline" size="sm" asChild>
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            asChild
+                                            className="rounded-full border-primary-body/40 text-primary-white hover:bg-gradient-primary hover:border-transparent font-roboto"
+                                        >
                                             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center">
                                                 <ExternalLink className="mr-2 h-4 w-4" />
                                                 {t("projects.liveDemo")}
@@ -91,7 +95,12 @@ export default function Projects() {
                                         </Button>
                                     )}
                                     {project.githubUrl && (
-                                        <Button variant="outline" size="sm" asChild>
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            asChild
+                                            className="rounded-full border-primary-body/40 text-primary-white hover:bg-gradient-primary hover:border-transparent font-roboto"
+                                        >
                                             <a
                                                 href={project.githubUrl}
                                                 target="_blank"
@@ -104,9 +113,14 @@ export default function Projects() {
                                         </Button>
                                     )}
                                     {project.corporateUrl && (
-                                        <Button variant="outline" size="sm" asChild>
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            asChild
+                                            className="rounded-full border-primary-body/40 text-primary-white hover:bg-gradient-primary hover:border-transparent font-roboto"
+                                        >
                                             <a
-                                                href={project.githubUrl}
+                                                href={project.corporateUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="flex items-center"

@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Textarea from "@/components/ui/textarea"
@@ -11,6 +11,7 @@ import { useLanguage } from "../contexts/LanguageContext"
 import emailjs from "@emailjs/browser"
 import ReCAPTCHA from "react-google-recaptcha"
 import { EMAILJS_CONFIG, RECAPTCHA_SITE_KEY } from "../config/emailjs"
+import SectionHeading from "./SectionHeading"
 
 interface FormData {
     name: string
@@ -36,15 +37,30 @@ export default function Contact() {
     })
 
     const [captchaValue, setCaptchaValue] = useState<string | null>(null)
+    const [captchaLoadError, setCaptchaLoadError] = useState(false)
     const recaptchaRef = useRef<ReCAPTCHA>(null)
     const formRef = useRef<HTMLFormElement>(null)
 
-    const { t } = useLanguage()
+    const { t, language } = useLanguage()
+
+    useEffect(() => {
+        emailjs.init({
+            publicKey: EMAILJS_CONFIG.PUBLIC_KEY,
+            blockHeadless: true,
+        })
+    }, [])
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        // Validar captcha
+        if (captchaLoadError) {
+            setFormStatus({
+                type: "error",
+                message: t("contact.captchaLoadError"),
+            })
+            return
+        }
+
         if (!captchaValue) {
             setFormStatus({
                 type: "error",
@@ -53,7 +69,6 @@ export default function Contact() {
             return
         }
 
-        // Validar campos
         if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
             setFormStatus({
                 type: "error",
@@ -65,39 +80,38 @@ export default function Contact() {
         setFormStatus({ type: "loading", message: t("contact.sending") })
 
         try {
-            // Preparar los datos del template
             const templateParams = {
                 from_name: formData.name,
                 from_email: formData.email,
+                user_name: formData.name,
+                user_email: formData.email,
                 to_email: "joel.madrid.code@gmail.com",
-                subject: "Mensaje enviado desde el portafolio",
-                message: formData.message,
                 reply_to: formData.email,
+                subject: `Portfolio - ${formData.name}`,
+                message: formData.message,
             }
 
-            // Enviar email usando EmailJS
             const result = await emailjs.send(
                 EMAILJS_CONFIG.SERVICE_ID,
                 EMAILJS_CONFIG.TEMPLATE_ID,
                 templateParams,
-                EMAILJS_CONFIG.PUBLIC_KEY,
             )
 
-            if (result.status === 200) {
+            if (result.status === 200 || result.text === "OK") {
                 setFormStatus({
                     type: "success",
                     message: t("contact.messageSent"),
                 })
 
-                // Limpiar formulario
                 setFormData({ name: "", email: "", message: "" })
                 setCaptchaValue(null)
                 recaptchaRef.current?.reset()
 
-                // Limpiar mensaje después de 5 segundos
                 setTimeout(() => {
                     setFormStatus({ type: "idle", message: "" })
                 }, 5000)
+            } else {
+                throw new Error(`Unexpected status: ${result.status}`)
             }
         } catch (error) {
             console.error("Error sending email:", error)
@@ -106,7 +120,6 @@ export default function Contact() {
                 message: t("contact.errorSending"),
             })
 
-            // Limpiar mensaje de error después de 5 segundos
             setTimeout(() => {
                 setFormStatus({ type: "idle", message: "" })
             }, 5000)
@@ -119,7 +132,6 @@ export default function Contact() {
             [e.target.name]: e.target.value,
         })
 
-        // Limpiar mensaje de estado si el usuario empieza a escribir
         if (formStatus.type !== "idle") {
             setFormStatus({ type: "idle", message: "" })
         }
@@ -127,143 +139,168 @@ export default function Contact() {
 
     const handleCaptchaChange = (value: string | null) => {
         setCaptchaValue(value)
+        if (value && formStatus.type === "error") {
+            setFormStatus({ type: "idle", message: "" })
+        }
     }
 
-    const isFormValid = formData.name.trim() && formData.email.trim() && formData.message.trim() && captchaValue
+    const handleCaptchaErrored = () => {
+        setCaptchaLoadError(true)
+        setFormStatus({
+            type: "error",
+            message: t("contact.captchaLoadError"),
+        })
+    }
+
+    const isFormValid =
+        formData.name.trim() &&
+        formData.email.trim() &&
+        formData.message.trim() &&
+        captchaValue &&
+        !captchaLoadError
     const isLoading = formStatus.type === "loading"
 
+    const contactItems = [
+        {
+            icon: Mail,
+            label: t("contact.email"),
+            value: "joel.madrid.code@gmail.com",
+            href: "mailto:joel.madrid.code@gmail.com",
+        },
+        {
+            icon: Phone,
+            label: t("contact.phone"),
+            value: "+52 618 169 8368",
+            href: "tel:+526181698368",
+        },
+        {
+            icon: MapPin,
+            label: t("contact.location"),
+            value: t("contact.locationValue"),
+            href: undefined,
+        },
+    ]
+
     return (
-        <section id="contact" className="py-20">
+        <section id="contact" className="py-20 bg-primary-dark border-t border-primary-body/10">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{t("contact.title")}</h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">{t("contact.subtitle")}</p>
-                </div>
+                <SectionHeading title={t("contact.title")} subtitle={t("contact.subtitle")} />
 
                 <div className="grid lg:grid-cols-2 gap-12">
                     <div>
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t("contact.talkProject")}</h3>
-                        <p className="text-gray-600 dark:text-gray-300 mb-8">{t("contact.description")}</p>
+                        <h3 className="text-2xl md:text-3xl font-coolvetica text-gradient mb-6">{t("contact.talkProject")}</h3>
+                        <p className="font-roboto text-primary-body mb-8 leading-relaxed">{t("contact.description")}</p>
 
                         <div className="space-y-6">
-                            <div className="flex items-center space-x-4">
-                                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
-                                    <Mail className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                            {contactItems.map(({ icon: Icon, label, value, href }) => (
+                                <div key={label} className="flex items-center space-x-4">
+                                    <div className="bg-gradient-primary p-3 rounded-full">
+                                        <Icon className="h-6 w-6 text-primary-white" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-coolvetica text-primary-white">{label}</h4>
+                                        {href ? (
+                                            <a
+                                                href={href}
+                                                className="font-roboto text-primary-body hover:text-gradient transition-colors"
+                                            >
+                                                {value}
+                                            </a>
+                                        ) : (
+                                            <p className="font-roboto text-primary-body">{value}</p>
+                                        )}
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="font-semibold text-gray-900 dark:text-white">{t("contact.email")}</h4>
-                                    <p className="text-gray-600 dark:text-gray-300">joel.madrid.code@gmail.com</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center space-x-4">
-                                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
-                                    <Phone className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-gray-900 dark:text-white">{t("contact.phone")}</h4>
-                                    <p className="text-gray-600 dark:text-gray-300">+52 618 169 8368</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center space-x-4">
-                                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
-                                    <MapPin className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-gray-900 dark:text-white">{t("contact.location")}</h4>
-                                    <p className="text-gray-600 dark:text-gray-300">México (GMT-6)</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
-                    <Card>
+                    <Card className="portfolio-card border-0">
                         <CardHeader>
-                            <CardTitle className="text-xl text-gray-900 dark:text-white">{t("contact.sendMessage")}</CardTitle>
+                            <CardTitle className="text-xl font-coolvetica text-primary-white">{t("contact.sendMessage")}</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                                <div>
-                                    <Input
-                                        type="text"
-                                        name="name"
-                                        placeholder={t("contact.yourName")}
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isLoading}
-                                        className="transition-all duration-200"
-                                    />
+                                <Input
+                                    type="text"
+                                    name="name"
+                                    placeholder={t("contact.yourName")}
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                    disabled={isLoading}
+                                    className="portfolio-input h-12"
+                                />
+
+                                <Input
+                                    type="email"
+                                    name="email"
+                                    placeholder={t("contact.yourEmail")}
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                    disabled={isLoading}
+                                    className="portfolio-input h-12"
+                                />
+
+                                <Textarea
+                                    name="message"
+                                    placeholder={t("contact.yourMessage")}
+                                    rows={5}
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    disabled={isLoading}
+                                    className="portfolio-input resize-none"
+                                />
+
+                                <div className="flex justify-center min-h-[78px]">
+                                    {RECAPTCHA_SITE_KEY ? (
+                                        <ReCAPTCHA
+                                            ref={recaptchaRef}
+                                            sitekey={RECAPTCHA_SITE_KEY}
+                                            onChange={handleCaptchaChange}
+                                            onErrored={handleCaptchaErrored}
+                                            onExpired={() => setCaptchaValue(null)}
+                                            theme="dark"
+                                            hl={language}
+                                        />
+                                    ) : (
+                                        <p className="text-sm text-red-400 font-roboto">{t("contact.captchaLoadError")}</p>
+                                    )}
                                 </div>
 
-                                <div>
-                                    <Input
-                                        type="email"
-                                        name="email"
-                                        placeholder={t("contact.yourEmail")}
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isLoading}
-                                        className="transition-all duration-200"
-                                    />
-                                </div>
-
-                                <div>
-                                    <Textarea
-                                        name="message"
-                                        placeholder={t("contact.yourMessage")}
-                                        rows={5}
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isLoading}
-                                        className="transition-all duration-200 resize-none"
-                                    />
-                                </div>
-
-                                {/* reCAPTCHA */}
-                                <div className="flex justify-center">
-                                    <ReCAPTCHA
-                                        ref={recaptchaRef}
-                                        sitekey={RECAPTCHA_SITE_KEY}
-                                        onChange={handleCaptchaChange}
-                                        theme="light"
-                                        size="normal"
-                                    />
-                                </div>
-
-                                {/* Mensaje de estado */}
                                 {formStatus.message && (
                                     <div
-                                        className={`flex items-center space-x-2 p-3 rounded-md ${formStatus.type === "success"
-                                                ? "bg-green-50 text-green-700 border border-green-200"
+                                        className={`flex items-center space-x-2 p-3 rounded-xl font-roboto text-sm ${
+                                            formStatus.type === "success"
+                                                ? "bg-green-500/10 text-green-300 border border-green-500/30"
                                                 : formStatus.type === "error"
-                                                    ? "bg-red-50 text-red-700 border border-red-200"
-                                                    : "bg-blue-50 text-blue-700 border border-blue-200"
-                                            }`}
+                                                  ? "bg-red-500/10 text-red-300 border border-red-500/30"
+                                                  : "bg-blue-500/10 text-blue-300 border border-blue-500/30"
+                                        }`}
                                     >
-                                        {formStatus.type === "success" && <CheckCircle className="h-5 w-5" />}
-                                        {formStatus.type === "error" && <AlertCircle className="h-5 w-5" />}
-                                        {formStatus.type === "loading" && <Loader2 className="h-5 w-5 animate-spin" />}
-                                        <span className="text-sm font-medium">{formStatus.message}</span>
+                                        {formStatus.type === "success" && <CheckCircle className="h-5 w-5 shrink-0" />}
+                                        {formStatus.type === "error" && <AlertCircle className="h-5 w-5 shrink-0" />}
+                                        {formStatus.type === "loading" && <Loader2 className="h-5 w-5 animate-spin shrink-0" />}
+                                        <span className="font-medium">{formStatus.message}</span>
                                     </div>
                                 )}
 
                                 <Button
                                     type="submit"
-                                    className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                                    size="lg"
+                                    className="w-full bg-gradient-primary hover:opacity-90 text-primary-white font-roboto font-bold rounded-full py-6 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-[1.02] border-0"
                                     disabled={!isFormValid || isLoading}
                                 >
                                     {isLoading ? (
                                         <>
-                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                                             {t("contact.sending")}
                                         </>
                                     ) : (
                                         <>
-                                            <Send className="mr-2 h-4 w-4" />
+                                            <Send className="mr-2 h-5 w-5" />
                                             {t("contact.send")}
                                         </>
                                     )}

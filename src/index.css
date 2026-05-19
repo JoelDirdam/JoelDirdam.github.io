@@ -76,6 +76,21 @@ html {
   }
 }
 
+/* Tarjetas del portafolio (estilo Hero) */
+@layer components {
+  .portfolio-card {
+    @apply rounded-2xl border border-primary-body/20 bg-primary-dark/80 backdrop-blur-sm shadow-lg transition-all duration-300 hover:border-gradient-from/40 hover:shadow-xl;
+  }
+
+  .portfolio-badge {
+    @apply border border-primary-body/30 bg-primary-dark/60 text-primary-body font-roboto hover:bg-gradient-primary hover:text-primary-white hover:border-transparent transition-all duration-300;
+  }
+
+  .portfolio-input {
+    @apply bg-primary-dark/60 border-primary-body/30 text-primary-white placeholder:text-primary-body/60 font-roboto focus-visible:ring-gradient-from focus-visible:border-gradient-from;
+  }
+}
+
 /* Animaciones suaves para los logos */
 @media (prefers-reduced-motion: reduce) {
 
